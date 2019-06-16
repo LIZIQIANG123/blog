@@ -576,7 +576,6 @@ let delComment = function (id) {
 let changeUserInfo = function (id, params, url) {
     //这个params里面装的是文字信息
     let sql;
-    console.log(url)
     //url存在的话
     if (url) {
       sql = `
@@ -584,16 +583,16 @@ let changeUserInfo = function (id, params, url) {
                   users
               set
                   name='${params.name}',
-                  imgsrc='${url}',
+                  imgsrc='${url}'
               where
                   id='${id}';
               `;
     } else {
       sql = `
               update
-                  user
+                  users
               set
-                  name='${params.name}',
+                  name='${params.name}'
               where
                   id='${id}';
               `;

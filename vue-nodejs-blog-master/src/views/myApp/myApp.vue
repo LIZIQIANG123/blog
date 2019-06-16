@@ -15,38 +15,10 @@
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button type="primary" @click="onSubmit">保存</el-button>
         <el-button>取消</el-button>
       </el-form-item>
     </el-form>
-    <form>
-      <div class="me">
-        <div class="title">个人信息修改</div>
-        <div class="content">
-          <div class="myInfo">
-            <div class="myName">
-              <span>我的名字：</span>
-              <input type="text" v-model="name">
-              <br>
-            </div>
-
-            <div class="myHead">
-              <input
-                ref="uploadImg"
-                type="file"
-                accept="image/png, image/gif, image/jpeg"
-                @change="previewImg"
-              >
-              <img :src="imgsrc" alt="我的头像" @click.stop="activePreview">
-              <p>点击图片更改头像</p>
-            </div>
-          </div>
-          <div class="save">
-            <button class="saveBtn" @click="onSubmit">提交</button>
-          </div>
-        </div>
-      </div>
-    </form>
     <form v-show="show">
       <div class="form-group">
         <label>用户名:</label>
@@ -108,19 +80,21 @@ export default {
       if (r) {
         let file = this.$refs.uploadImg.files[0];
         let formData = new FormData();
-        formData.append("file", file);
-        formData.append("name", this.name);
-        formData.append("signature", this.signature);
-        formData.append("breif", this.breif);
+        formData.append("file", this.imageUrl);
+        formData.append("name", this.form.name);
+        // formData.append("signature", this.signature);
+        // formData.append("breif", this.breif);
 
-        console.log(formData);
-        api.changeMyInfo(formData).then(
+        console.log(this.imageUrl);
+        console.log(this.form.name);
+
+        api.changeInfo(formData).then(
           res => {
             switch (res.code) {
               case "200":
-                console.log(res);
                 alert("信息修改成功");
-                this.reload();
+                  sessionStorage.removeItem("username");
+
                 break;
               case "400":
                 console.log("服务器开小差了，信息修改失败");

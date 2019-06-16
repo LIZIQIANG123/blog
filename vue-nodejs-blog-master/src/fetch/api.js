@@ -256,6 +256,11 @@ allArticle(){
 		let data=formData;
 		return fetchPost('/user/changeInfo',data);
 	},
+	changeInfo(formData){
+		console.log(formData);
+		let data=formData;
+		return fetchPost('/frontend/changeInfo',data);
+	},
 	getpic(){
 	
 		return fetchPost('/backend/allpic',);

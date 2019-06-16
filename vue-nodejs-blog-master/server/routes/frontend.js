@@ -180,28 +180,27 @@ router.get('/getComments',(req,res)=>{
 
 
 //更改个人信息
-router.post('/changeUserinfo',upload, (req, res)=> {
+router.post('/changeInfo', upload,(req, res)=> {
     //如果有传了图片，才
       let url;
       let params=req.body;
       let id=1;
+      console.log(params)
       //如果有图片，那么就获取图片
-      if(req.file){
+      if(params.file){
         //拼接文件上传后的路径，由于之前用了express.static，所以这里不用写public，直接写/img/
-        url ='http://localhost:3001/img/user/'+req.file.filename;
+        url =params.file;
       }
-  
+
       let sql=db.changeUserInfo(id,params,url);
       db.Query(sql).then(data=>{
-        console.log('图片上传成功');
         res.send({"code":"200"});
       },err=>{
         console.log(err);
         res.send({"code":"400"});
       });
     
-  });
-  
+  })
 router.get('/getusername',(req,res)=>{
     let sq= db.GetUser(req.query.id);
     db.Query(sq).then(data=>{
