@@ -78,7 +78,7 @@ export default {
     onSubmit() {
       let r = confirm("确定保存吗？");
       if (r) {
-        let file = this.$refs.uploadImg.files[0];
+        // let file = this.$refs.uploadImg.files[0];
         let formData = new FormData();
         formData.append("file", this.imageUrl);
         formData.append("name", this.form.name);

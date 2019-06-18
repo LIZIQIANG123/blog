@@ -46,7 +46,7 @@
           </el-col>
           <el-col :span="2" class="userinfo">
             <el-dropdown v-show="username">
-              <el-button style="background: #545c64;
+              <el-button style="background: rgb(79, 191, 243);
     color: #fff;
     border: none;">
                 你好：{{username}}
@@ -236,7 +236,7 @@ a {
   .header {
     height: 60px;
     line-height: 60px;
-    background: #545c64;
+    background:rgb(79, 191, 243);
     color: #fff;
     .userinfo {
       text-align: right;

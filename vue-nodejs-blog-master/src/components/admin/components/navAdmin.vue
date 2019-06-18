@@ -52,7 +52,7 @@ import store from '@/store/index'
         width: 300px;
         height: 100%;
         position: fixed;
-        background: #353d47;
+        background: #82b8fa;
         color: white;
         h1{
             margin: 50px 0;
